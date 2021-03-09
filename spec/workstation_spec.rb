@@ -18,4 +18,10 @@ describe Workstation do
       expect(subject.filter([1500, 40])).to eq [1000, 40]
     end
   end
+
+  describe '#initialize' do
+    it 'has a minimum' do
+      expect(subject.minimum).to eq 40
+    end
+  end
 end

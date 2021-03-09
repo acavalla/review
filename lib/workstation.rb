@@ -1,5 +1,9 @@
 class Workstation
-  
+  attr_reader :minimum
+  def initialize
+    @minimum = 40
+  end
+
   def filter(soundwave)
     new_soundwave = []
     soundwave.each_with_index do |freq, i|
