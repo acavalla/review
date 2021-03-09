@@ -33,5 +33,15 @@ describe Workstation do
       expect(subject.maximum).to eq 1000
     end
 
+    it 'can change default maximum' do
+      subject = Workstation.new(40, 1200)
+      expect(subject.maximum).to eq 1200
+    end
+  end
+
+  describe '#edge cases' do
+    it 'throw an error for nil in array' do
+      expect{ subject.filter([1, nil, 2]) }.to raise_error("Sound file corrupted")
+    end
   end
 end

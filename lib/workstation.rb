@@ -1,13 +1,16 @@
 class Workstation
   attr_reader :minimum, :maximum
   DEFAULT_MINIMUM = 40
-  def initialize(minimum = DEFAULT_MINIMUM, maximum = 1000)
+  DEFAULT_MAXIMUM = 1000
+  def initialize(minimum = DEFAULT_MINIMUM, maximum = DEFAULT_MAXIMUM)
     @minimum = minimum
     @maximum = maximum
   end
 
   def filter(soundwave)
     new_soundwave = []
+    raise "Sound file corrupted" if soundwave.any?{ |e| e.nil? }
+
     soundwave.each_with_index do |freq, i|
       if freq < @minimum
         freq = @minimum
