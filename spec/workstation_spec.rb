@@ -6,8 +6,8 @@ describe Workstation do
       expect(subject).to respond_to(:filter).with(1).arguments
     end
 
-    it 'filter fixes anything under 40hz' do
-      expect(subject.filter(1)).to eq 40
+    it 'can handle an array' do
+      expect(subject.filter([1])).to eq [40]
     end
   end
 end
