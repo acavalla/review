@@ -43,5 +43,9 @@ describe Workstation do
     it 'throw an error for nil in array' do
       expect{ subject.filter([1, nil, 2]) }.to raise_error("Sound file corrupted")
     end
+
+    it 'throw an error for empty array' do
+      expect{ subject.filter([]) }.to raise_error("No frequency supplied")
+    end
   end
 end

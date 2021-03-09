@@ -9,6 +9,7 @@ class Workstation
 
   def filter(soundwave)
     new_soundwave = []
+    raise "No frequency supplied" if soundwave.empty?
     raise "Sound file corrupted" if soundwave.any?{ |e| e.nil? }
 
     soundwave.each_with_index do |freq, i|
