@@ -13,5 +13,9 @@ describe Workstation do
     it 'can handle an array of 2' do
       expect(subject.filter([1, 40])).to eq [40, 40]
     end
+
+    it 'can fix things over maximum' do
+      expect(subject.filter([1500, 40])).to eq [1000, 40]
+    end
   end
 end
