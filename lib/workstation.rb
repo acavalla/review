@@ -1,13 +1,12 @@
 class Workstation
   def filter(soundwave)
-    soundwave.each do |freq|
-      puts freq
+    new_soundwave = []
+    soundwave.each_with_index do |freq, i|
       if freq < 40
-        puts true
         freq = 40
       end
-      soundwave = [freq]
+      new_soundwave[i] = freq
     end
-    return soundwave
+    return new_soundwave
   end
 end
