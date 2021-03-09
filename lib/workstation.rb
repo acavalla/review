@@ -8,18 +8,24 @@ class Workstation
   end
 
   def filter(soundwave)
-    new_soundwave = []
-    raise "No frequency supplied" if soundwave.empty?
-    raise "Sound file corrupted" if soundwave.any?{ |e| e.nil? }
+    @soundwave = soundwave
+    sound_check
+    transform
+  end
 
-    soundwave.each_with_index do |freq, i|
+  def transform
+    new_soundwave = @soundwave.map { |freq|
       if freq < @minimum
         freq = @minimum
-      elsif freq > 1000
-        freq = 1000
-      end
-      new_soundwave[i] = freq
+      elsif freq > @maximum
+        freq = @maximum
+      else freq = freq
+      end }
     end
-    return new_soundwave
+
+  def sound_check
+    raise "No frequency supplied" if @soundwave.empty?
+
+    raise "Sound file corrupted" if @soundwave.any?{ |e| e.nil? }
   end
 end
