@@ -1,14 +1,16 @@
 class Workstation
-  attr_reader :minimum
-  def initialize
-    @minimum = 40
+  attr_reader :minimum, :maximum
+  DEFAULT_MINIMUM = 40
+  def initialize(minimum = DEFAULT_MINIMUM, maximum = 1000)
+    @minimum = minimum
+    @maximum = maximum
   end
 
   def filter(soundwave)
     new_soundwave = []
     soundwave.each_with_index do |freq, i|
-      if freq < 40
-        freq = 40
+      if freq < @minimum
+        freq = @minimum
       elsif freq > 1000
         freq = 1000
       end

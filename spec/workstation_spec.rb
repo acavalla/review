@@ -20,8 +20,18 @@ describe Workstation do
   end
 
   describe '#initialize' do
-    it 'has a minimum' do
+    it 'has a default minimum 40' do
       expect(subject.minimum).to eq 40
     end
+
+    it 'can change default minimum' do
+      subject = Workstation.new(50)
+      expect(subject.minimum).to eq 50
+    end
+
+    it 'has a default maximum of 1000' do
+      expect(subject.maximum).to eq 1000
+    end
+
   end
 end
